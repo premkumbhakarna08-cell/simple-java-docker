@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "premk26/simple-java-docker"
-        TAG = "build-${1.0}"
+        TAG = "1.0"
     }
 
     stages {
@@ -18,17 +18,18 @@ pipeline {
             steps {
                 sh '''
                 mkdir -p out
-                javac -d out $(find src "Main.java")
+                javac -d out $(find src -name "*.java")
                 '''
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh '''
-                docker build -t premk26/simmple-java-docker .
-                docker tag premk26/simple-java-docker:1.0 premk26/simple-java-docker:latest
-                '''
+                sh """
+                docker build -t ${IMAGE_NAME}:${TAG} .
+                docker tag ${IMAGE_NAME}:${TAG} ${IMAGE_NAME}:latest
+                """
             }
         }
-
+     } // closes stages 
+ } // closes pipeline
