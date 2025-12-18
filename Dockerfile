@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
 #copy the sourse code from your Host machine to your contanier
-COPY src/Main.java /app/Main.java
+COPY out/Main.java
 
 #compile the application code
 RUN javac Main.java 
