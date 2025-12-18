@@ -16,7 +16,7 @@ pipeline {
 
         stage('Compile Java') {
             steps {
-                sh '''
+                bat '''
                 mkdir -p out
                 javac -d out $(find src -name "*.java")
                 '''
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh """
+                bat """
                 docker build -t ${IMAGE_NAME}:${TAG} .
                 docker tag ${IMAGE_NAME}:${TAG} ${IMAGE_NAME}:latest
                 """
