@@ -17,8 +17,8 @@ pipeline {
         stage('Compile Java') {
             steps {
                 bat '''
-                mkdir -p out
-                javac -d out $(find src -name "*.java")
+                mkdir /app 
+                javac src/Main.java /app/Main.java
                 '''
             }
         }
