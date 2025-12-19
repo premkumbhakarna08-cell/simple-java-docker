@@ -1,4 +1,5 @@
 ## simple-java-docker-App
+## Author: Prem Kumbhakarna
 
 This is a basic Java application build using raw 'javac' packaged and run inside a Docker container
 
